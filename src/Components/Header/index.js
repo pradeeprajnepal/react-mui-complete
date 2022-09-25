@@ -7,20 +7,25 @@ import SearchIcon from '@mui/icons-material/Search';
 import { makeStyles } from '@mui/styles';
 
 
-const useStyles= makeStyles({
+const useStyles= makeStyles(theme=>({
     root:{
-        backgroundColor:'#fff !important'
+        backgroundColor:'#fff !important',
+        transform:'translateƵ(0)'
     },
     searchInput:{
         opacity:'0.6',
-        padding:'0px 8px',
+        padding:`0px ${theme.spacing(1)}px`,
         fontSize:'0.8rem',
         '&:hover':{
             backgroundColor:'#f2f2f2'
-        }
-    }
-    
-})
+        },
+        '& .MuiSvgIcon-root':{
+            marginRight:theme.spacing(1)
+        },
+       
+    },
+ 
+}))
 
 export default function Header() {
     const classes= useStyles();
@@ -38,13 +43,13 @@ export default function Header() {
                     </Grid>
                     <Grid item sm></Grid>
                     <Grid item >
-                        <IconButton>
+                        <IconButton >
                             <Badge badgeContent={4} color="secondary">
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>
                         <IconButton>
-                            <Badge badgeContent={1} color="secondary">
+                            <Badge badgeContent={1} color="primary">
                                 <ChatBubbleIcon />
                             </Badge>
 
