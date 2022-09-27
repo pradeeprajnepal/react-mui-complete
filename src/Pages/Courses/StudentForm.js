@@ -26,15 +26,43 @@ const initialFValues={
 
 export default function StudentForm() {
 
-  const {values, setValues, handleInputChange}=UseForm(initialFValues)
+  const validate=(fieldValues=values)=>{
+    let temp={...errors}
+    if('fullName'in fieldValues)
+    temp.fullName=fieldValues.fullName?"":"This field is required."
+    if('email'in fieldValues)
+    temp.email=(/$^|.+@.+..+/).test(fieldValues.email)?"":"Email is not valid."
+    if('mobile'in fieldValues)
+    temp.mobile=fieldValues.mobile.length>9?"":"Minimum 10 numbers."
+    if('courseId'in fieldValues)
+    temp.courseId=fieldValues.courseId.length!==0?"":"This field is required."
+    setErrors({
+      ...temp
+    })
+
+    if(fieldValues===values)
+    return Object.values(temp).every(x=>x==="")
+  }
+
+  const {values, 
+    setValues,
+    errors,setErrors,
+     handleInputChange, 
+     resetForm}=UseForm(initialFValues,true,validate)
 
 
-
+const handleSubmit=(e)=>{
+  e.preventDefault();
+  if(validate()){
+    studentData.insertStudent(values)
+    resetForm()
+  }
+}
 
 
   return (
     
-      <Form>
+      <Form onSubmit={handleSubmit}>
       <Grid container>
         <Grid item xs={6}>
           <Controls.Input
@@ -42,23 +70,27 @@ export default function StudentForm() {
           label="Full Name"
           value={values.fullName}
           onChange={handleInputChange}
+          error={errors.fullName}
           />
           <Controls.Input
           name="email"
           label="Email"
           value={values.email}
-          onChange={handleInputChange}
+          onChange={handleInputChange} 
+          error={errors.email}
           />
           <Controls.Input
           name="mobile"
           label="Mobile"
-          value={values.email}
+          value={values.mobile}
           onChange={handleInputChange}
+          error={errors.mobile}
+
           />          
           <Controls.Input
           name="address"
           label="Address"
-          value={values.email}
+          value={values.address}
           onChange={handleInputChange}
           />
           
@@ -77,6 +109,8 @@ export default function StudentForm() {
           value={values.courseId}
           onChange={handleInputChange}
           options={studentData.getCourseCollection()}
+          error={errors.courseId}
+
           />
           <Controls.DatePicker
                     name="isPermanent"
@@ -98,6 +132,7 @@ export default function StudentForm() {
             <Controls.Button 
             text="Reset"
             color="secondary"
+            onClick={resetForm}
             />
           </div>
 
