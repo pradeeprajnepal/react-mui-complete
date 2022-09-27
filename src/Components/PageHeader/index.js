@@ -4,14 +4,14 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles= makeStyles(theme=>({
     root:{
-        backgroundColor:'#fdfdff',
-
+        backgroundColor:'#fdfdff !important',
+       
     },
     pageHeader:{
         padding:theme.spacing(4),
         display:'flex',
-        marginBottom:theme.spacing(2)
-
+        marginBottom:theme.spacing(2),
+   
     },
     pageIcon:{
         display:'inline-block',

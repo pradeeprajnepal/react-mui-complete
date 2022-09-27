@@ -4,8 +4,7 @@ import SideMenu from '../Components/SideMenu';
 import Header from '../Components/Header';
 import { CssBaseline, createTheme, ThemeProvider } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import PageHeader from '../Components/PageHeader';
-import ComputerIcon from '@mui/icons-material/Computer';
+import Students from '../Pages/Courses/Students';
 
 const theme = createTheme({
   palette: {
@@ -54,12 +53,9 @@ function App() {
 
       <div className={classes.appMain}>
         <Header />
-        <PageHeader
-          title='Page Header'
-          subtitle='Page Discription'
-          icon={<ComputerIcon fontSize='large' />} />
+        <Students />
       </div>
-      <div>here we go!</div>
+      
       <CssBaseline />
     </ThemeProvider>
   );

@@ -31,7 +31,7 @@ export default function Header() {
     const classes= useStyles();
     console.log(classes);
     return (
-        <AppBar position='static' className={classes.root}>
+        <AppBar position='relative' className={classes.root}>
             <Toolbar>
                 <Grid container>
                     <Grid item >
