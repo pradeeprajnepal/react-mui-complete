@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/https;//pradeeprajnepal.github.io/static/css/main.61ac7470.css",
+    "main.js": "/https;//pradeeprajnepal.github.io/static/js/main.d511dcb4.js",
+    "static/js/787.41e853ad.chunk.js": "/https;//pradeeprajnepal.github.io/static/js/787.41e853ad.chunk.js",
+    "index.html": "/https;//pradeeprajnepal.github.io/index.html",
+    "main.61ac7470.css.map": "/https;//pradeeprajnepal.github.io/static/css/main.61ac7470.css.map",
+    "main.d511dcb4.js.map": "/https;//pradeeprajnepal.github.io/static/js/main.d511dcb4.js.map",
+    "787.41e853ad.chunk.js.map": "/https;//pradeeprajnepal.github.io/static/js/787.41e853ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.61ac7470.css",
+    "static/js/main.d511dcb4.js"
+  ]
+}
