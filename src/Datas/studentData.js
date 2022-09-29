@@ -6,15 +6,15 @@ export const getCourseCollection=()=>([
 ])
 
 const KEYS ={
-   students:'employees',
-    studentsId:'employeeId'
+    students:'students',
+    studentId:'studentId'
 }
 
 export function insertStudent(data) {
     let students=getAllStudents();
     data['id'] = generateStudentId()
     students.push(data)
-    localStorage.setItem(KEYS.employees,JSON.stringify(students))
+    localStorage.setItem(KEYS.students,JSON.stringify(students))
 }
 
 export function generateStudentId() {
@@ -28,5 +28,11 @@ export function generateStudentId() {
 export function getAllStudents() {
     if (localStorage.getItem(KEYS.students) == null)
         localStorage.setItem(KEYS.students, JSON.stringify([]))
-    return JSON.parse(localStorage.getItem(KEYS.employees));
+    let students= JSON.parse(localStorage.getItem(KEYS.students));
+    let courses= getCourseCollection();
+    return students.map(x=>({
+        ...x,
+        course:courses[x.courseId-1].title
+    }))
 }
+

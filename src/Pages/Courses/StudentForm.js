@@ -56,6 +56,8 @@ const handleSubmit=(e)=>{
   if(validate()){
     studentData.insertStudent(values)
     resetForm()
+  }else{
+    console.log(errors)
   }
 }
 
