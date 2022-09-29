@@ -61,7 +61,7 @@ export default function Students() {
         icon={<ComputerIcon fontSize='large' />} />
 
       <Paper className={classes.pageContent}>
-        {/* <StudentForm /> */}
+        <StudentForm />
         <Toolbar >
           <Controls.Input
             label="Search Students"
