@@ -1,20 +1,33 @@
-export const getCourseCollection=()=>([
-    {id:'1', title:'Science'},
-    {id:'2', title:'English'},
-    {id:'3', title:'Social'},
-    {id:'4', title:'Math'},
+export const getCourseCollection = () => ([
+    { id: '1', title: 'Science' },
+    { id: '2', title: 'English' },
+    { id: '3', title: 'Social' },
+    { id: '4', title: 'Math' },
 ])
 
-const KEYS ={
-    students:'students',
-    studentId:'studentId'
+const KEYS = {
+    students: 'students',
+    studentId: 'studentId'
 }
 
 export function insertStudent(data) {
-    let students=getAllStudents();
+    let students = getAllStudents();
     data['id'] = generateStudentId()
     students.push(data)
-    localStorage.setItem(KEYS.students,JSON.stringify(students))
+    localStorage.setItem(KEYS.students, JSON.stringify(students))
+}
+
+export function updateStudent(data) {
+    let students = getAllStudents();
+    let recordIndex = students.findIndex(x => x.id === data.id)
+    students[recordIndex] = { ...data }
+    localStorage.setItem(KEYS.students, JSON.stringify(students))
+}
+
+export function deleteStudent(id) {
+    let students = getAllStudents();
+    students = students.filter(x => x.id !== id)
+    localStorage.setItem(KEYS.students, JSON.stringify(students))
 }
 
 export function generateStudentId() {
@@ -28,11 +41,10 @@ export function generateStudentId() {
 export function getAllStudents() {
     if (localStorage.getItem(KEYS.students) == null)
         localStorage.setItem(KEYS.students, JSON.stringify([]))
-    let students= JSON.parse(localStorage.getItem(KEYS.students));
-    let courses= getCourseCollection();
-    return students.map(x=>({
+    let students = JSON.parse(localStorage.getItem(KEYS.students));
+    let courses = getCourseCollection();
+    return students.map(x => ({
         ...x,
-        course:courses[x.courseId-1].title
+        course: courses[x.courseId - 1].title
     }))
 }
-
